@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami_app_c11/moduls/hadith/hadith_details_view.dart';
+import 'package:islami_app_c11/moduls/hadith/hadith_details_view.dart'; // Import the package
 
 class HadithView extends StatefulWidget {
   const HadithView({super.key});
@@ -19,7 +19,7 @@ class _HadithViewState extends State<HadithView> {
     return Column(
       children: [
         Image.asset(
-          "assets/icons/hadith_header.png",
+          "assets/images/hadith_header.png",
           scale: 3,
         ),
         const Divider(),
@@ -54,19 +54,22 @@ class _HadithViewState extends State<HadithView> {
   }
 
   Future<void> loadHadithData() async {
-    String content = await rootBundle.loadString("assets/files/ahadeth(1).txt");
-    List<String> allHadithDataList = content.split('#');
+    String content = await rootBundle.loadString("assets/files/ahadeth.txt");
+    List<String> allHadithDataList = content.split('#\r');
     for (int i = 0; i < allHadithDataList.length; i++) {
       // print(allHadithDataList[i]);
-
       String singleHadithData = allHadithDataList[i].trim();
       int indexLength = singleHadithData.indexOf("\n");
+      if (indexLength == -1) {
+        indexLength = singleHadithData.length;
+      }
       String title = singleHadithData.substring(0, indexLength);
       String bodyContent = singleHadithData.substring(indexLength + 1);
       HadithData hadithData =
           HadithData(title: title, bodyContent: bodyContent);
       hadithDataList.add(hadithData);
     }
+    setState(() {});
   }
 }
 

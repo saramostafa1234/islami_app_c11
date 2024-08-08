@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../quran_view.dart';
 
-class SuraTitle extends StatelessWidget {
+class SuraTitle extends StatefulWidget {
   final SuraData data;
 
   const SuraTitle({
@@ -11,13 +11,18 @@ class SuraTitle extends StatelessWidget {
   });
 
   @override
+  State<SuraTitle> createState() => _SuraTitleState();
+}
+
+class _SuraTitleState extends State<SuraTitle> {
+  @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Row(
       children: [
         Expanded(
           child: Text(
-            data.suraNumber,
+            widget.data.suraNumber,
             textAlign: TextAlign.center,
             style: theme.textTheme.bodyMedium,
           ),
@@ -25,7 +30,7 @@ class SuraTitle extends StatelessWidget {
         SizedBox(height: 35, child: VerticalDivider()),
         Expanded(
           child: Text(
-            data.suraName,
+            widget.data.suraName,
             textAlign: TextAlign.center,
             style: theme.textTheme.bodyMedium,
           ),
