@@ -75,7 +75,7 @@ class _SettingsViewState extends State<SettingsView> {
           CustomDropdown<String>(
             hintText: 'Select job role',
             items: _themes,
-            initialItem: provider.currentThemeMode == ThemeMode.dark
+            initialItem: provider.currentThemeMode == ThemeMode.light
                 ? _themes[0]
                 : _themes[1],
             onChanged: (value) {

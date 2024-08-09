@@ -63,7 +63,7 @@ class _LayOutViewState extends State<LayOutView> {
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(
-                AssetImage('assets/icons/moshaf_gold@3x.png'),
+                AssetImage('assets/icons/moshaf_gold_3x.png'),
               ),
               label: lang.hadith,
             ),
